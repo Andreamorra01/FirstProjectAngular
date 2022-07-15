@@ -1,0 +1,17 @@
+<div *ngFor="let i of imageLink;let indice = index">
+    <!-- <img [src]="i.img" alt=""> -->
+    <!-- <h1>{{indice}}</h1> -->
+    <mat-card class="example-card">
+        <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{i.name}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image [src]="i.img">
+        <mat-card-actions>
+        <button mat-button>Vedi dettaglio</button>
+        </mat-card-actions>
+  </mat-card>
+
+</div>
+
+  
