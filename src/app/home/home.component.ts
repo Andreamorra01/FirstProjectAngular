@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FetchDataService } from '../fetch-data.service';
 
+import { AppRoutingModule } from '../app-routing.module';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -10,7 +13,7 @@ export class HomeComponent implements OnInit {
 
   imageLink:any[] = []
 
-  constructor(private digimon: FetchDataService) { }
+  constructor(private digimon: FetchDataService, private router : Router) { }
 
   ngOnInit(): void {
     this.showConfig()

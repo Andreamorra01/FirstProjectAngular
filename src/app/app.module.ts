@@ -10,11 +10,13 @@ import { MatSliderModule } from '@angular/material/slider';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import { SottoscrizioneComponent } from './sottoscrizione/sottoscrizione.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    SottoscrizioneComponent
   ],
   imports: [
     BrowserModule,
