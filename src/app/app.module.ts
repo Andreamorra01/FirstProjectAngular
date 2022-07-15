@@ -11,6 +11,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { SottoscrizioneComponent } from './sottoscrizione/sottoscrizione.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SottoscrizioneComponent } from './sottoscrizione/sottoscrizione.compone
     HttpClientModule,
     BrowserAnimationsModule,
     MatSliderModule,
-    MatCardModule
+    MatCardModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

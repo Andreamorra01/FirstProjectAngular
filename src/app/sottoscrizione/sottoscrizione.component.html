@@ -1,1 +1,36 @@
-<p>sottoscrizione works!</p>
+<div [formGroup]="datiSottoscrizione">
+    <label for="name">Name: </label>
+    <input id="name" type="text" formControlName="name"> <br>
+
+    <label for="surname">Surname: </label>
+    <input id="surname" type="text" formControlName="surname"> <br>
+
+    <label for="email">Email: </label>
+    <input id="email" type="text" formControlName="email"> <br>
+
+    <label for="numberPhone">Phone number: </label>
+    <input id="numberPhone" type="text" formControlName="numberPhone"> <br><br>
+
+    <div formGroupName="address">
+        <h2>Address</h2>
+
+        <label for="via">Street: </label>
+        <input id="via" type="text" formControlName="via"> <br>
+
+        <label for="civico">Civico: </label>
+        <input id="civico" type="text" formControlName="civico"> <br>
+    </div>
+
+    <label for="privacy">Privacy: </label>
+    <input type="checkbox"  id="privacy" formControlName="privacy"> <br>
+
+    <label for="facoltativePrivacy">Facoltative Privacy: </label>
+    <input type="checkbox"  id="facoltativePrivacy" formControlName="facoltativePrivacy"> <br>
+
+    <p>{{ datiSottoscrizione.value | json }}</p>
+</div>
+
+
+
+
+<button type="button" (click)="onSubmit()">Submit</button>
