@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   { 
     component: SottoscrizioneComponent,
-    path: 'subscribe'
+    path: 'subscribe/:id'
   }
 ];
 

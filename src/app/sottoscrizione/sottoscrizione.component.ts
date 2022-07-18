@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-sottoscrizione',
@@ -8,7 +9,9 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 })
 export class SottoscrizioneComponent implements OnInit {
 
-  constructor(private form : FormBuilder) { }
+  data : any
+
+  constructor(private form : FormBuilder, private router : ActivatedRoute) { }
 
   datiSottoscrizione = this.form.group({
     name: ['', Validators.required],
@@ -24,6 +27,8 @@ export class SottoscrizioneComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    console.log(this.router.snapshot.params)
+    this.data = this.router.snapshot.params['id']
   }
 
   onSubmit() {
