@@ -1,6 +1,13 @@
-<h1>{{data | json}}</h1>
+<mat-card class="example-card">
+    <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{data.name}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image [src]="data.img">
+</mat-card>
 
-<div [formGroup]="datiSottoscrizione">
+<div> 
+<form (ngSubmit) =  "onSubmit()" [formGroup]="datiSottoscrizione">
     <label for="name">Name: </label>
     <input id="name" type="text" formControlName="name"> <br>
 
@@ -28,11 +35,8 @@
 
     <label for="facoltativePrivacy">Facoltative Privacy: </label>
     <input type="checkbox"  id="facoltativePrivacy" formControlName="facoltativePrivacy"> <br>
-
+    <button type="submit" >Submit</button>
+</form>
     <p>{{ datiSottoscrizione.value | json }}</p>
 </div>
 
-
-
-
-<button type="button" (click)="onSubmit()">Submit</button>

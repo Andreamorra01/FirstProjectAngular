@@ -13,13 +13,13 @@ export class SottoscrizioneComponent implements OnInit {
   data : any
 
   constructor(private form : FormBuilder, private location: Location, private router : Router) { 
-    this.data = this.router.getCurrentNavigation()?.extras.state
+    // this.data = this.router.getCurrentNavigation()?.extras.state // passare dati tramite Router service
   }
 
   datiSottoscrizione = this.form.group({
-    name: ['', Validators.required],
-    surname: ['', Validators.required],
-    email: ['', Validators.required],
+    name: ['',  Validators.minLength(4)],
+    surname: ['', Validators.minLength(3)],
+    email: ['', Validators.email],
     numberPhone: [''],
     address: this.form.group({
       via: [''],
@@ -30,11 +30,15 @@ export class SottoscrizioneComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    // this.data = this.location.getState();
+    this.data = this.location.getState();// passo dati tramite Location 
     
   }
 
   onSubmit() {
+    if(!this.datiSottoscrizione.valid){
+      alert("compilare tutti i campi")
+      return;
+    }
     console.log(this.datiSottoscrizione.value)
   }
 
