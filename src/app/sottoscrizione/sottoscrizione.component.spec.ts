@@ -5,7 +5,7 @@ import { SottoscrizioneComponent } from './sottoscrizione.component';
 describe('SottoscrizioneComponent', () => {
   let component: SottoscrizioneComponent;
   let fixture: ComponentFixture<SottoscrizioneComponent>;
-
+  
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ SottoscrizioneComponent ]

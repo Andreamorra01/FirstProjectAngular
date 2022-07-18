@@ -20,7 +20,8 @@ export class SottoscrizioneComponent implements OnInit {
     name: ['',  Validators.minLength(4)],
     surname: ['', Validators.minLength(3)],
     email: ['', Validators.email],
-    numberPhone: [''],
+    numberPhone: ['', [ Validators.required,Validators.pattern("^[0-9]*$"),
+    Validators.minLength(10), Validators.maxLength(10)]],
     address: this.form.group({
       via: [''],
       civico: ['']
