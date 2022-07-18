@@ -29,5 +29,10 @@ export class HomeComponent implements OnInit {
 
       });
   }
+  goToDetail(el:any){
+    console.log(el)
+    
+
+  }
 
 }
