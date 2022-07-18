@@ -30,8 +30,8 @@ export class HomeComponent implements OnInit {
       });
   }
   goToDetail(el:any){
+    this.router.navigateByUrl('/subscribe', { state: el });
     console.log(el)
-    
 
   }
 

@@ -1,6 +1,7 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sottoscrizione',
@@ -11,7 +12,9 @@ export class SottoscrizioneComponent implements OnInit {
 
   data : any
 
-  constructor(private form : FormBuilder, private router : ActivatedRoute) { }
+  constructor(private form : FormBuilder, private location: Location, private router : Router) { 
+    this.data = this.router.getCurrentNavigation()?.extras.state
+  }
 
   datiSottoscrizione = this.form.group({
     name: ['', Validators.required],
@@ -21,14 +24,14 @@ export class SottoscrizioneComponent implements OnInit {
     address: this.form.group({
       via: [''],
       civico: ['']
-    }),
+    }), //array group
     privacy: ['', Validators.requiredTrue],
     facoltativePrivacy: ['']
   });
 
   ngOnInit(): void {
-    console.log(this.router.snapshot.params)
-    this.data = this.router.snapshot.params['id']
+    // this.data = this.location.getState();
+    
   }
 
   onSubmit() {
