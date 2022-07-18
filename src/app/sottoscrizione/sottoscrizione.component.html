@@ -13,8 +13,11 @@
     <div
         *ngIf="datiSottoscrizione.get('name')?.invalid && 
         datiSottoscrizione.get('name')?.errors && 
-        (datiSottoscrizione.get('name')?.dirty) || datiSottoscrizione.get('name')?.touched">
-      <p> This field is required.</p> 
+        (datiSottoscrizione.get('name')?.dirty)">
+        <small class="text-danger"*ngIf="datiSottoscrizione.get('name')?.hasError('minlength')">
+            The minimum length for this field is {{datiSottoscrizione.get('name')?.errors?.['minlength'].requiredLength}} characters.
+        </small>
+        <!-- <p>required</p> -->
     </div>
 
     <label for="surname">Surname: </label>
