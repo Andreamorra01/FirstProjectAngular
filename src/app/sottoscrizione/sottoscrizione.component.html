@@ -6,10 +6,16 @@
     <img mat-card-image [src]="data.img">
 </mat-card>
 
-<div> 
+<div > 
 <form (ngSubmit) =  "onSubmit()" [formGroup]="datiSottoscrizione">
     <label for="name">Name: </label>
     <input id="name" type="text" formControlName="name"> <br>
+    <div
+        *ngIf="datiSottoscrizione.get('name')?.invalid && 
+        datiSottoscrizione.get('name')?.errors && 
+        (datiSottoscrizione.get('name')?.dirty) || datiSottoscrizione.get('name')?.touched">
+      <p> This field is required.</p> 
+    </div>
 
     <label for="surname">Surname: </label>
     <input id="surname" type="text" formControlName="surname"> <br>
@@ -39,7 +45,7 @@
     </div>
     
   
-    <button type="submit" >Submit</button>
+    <button type="submit" [disabled]="datiSottoscrizione.invalid">Submit</button>
 </form>
     <p>{{ datiSottoscrizione.value | json }}</p>
 </div>
