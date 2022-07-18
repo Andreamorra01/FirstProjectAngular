@@ -20,14 +20,18 @@ export class SottoscrizioneComponent implements OnInit {
     name: ['',  Validators.minLength(4)],
     surname: ['', Validators.minLength(3)],
     email: ['', Validators.email],
-    numberPhone: ['', [ Validators.required,Validators.pattern("^[0-9]*$"),
-    Validators.minLength(10), Validators.maxLength(10)]],
+    numberPhone: ['', [ 
+      Validators.required,
+      Validators.pattern("^[0-9]*$"),
+      Validators.minLength(10),
+      Validators.maxLength(10)]],
+
     address: this.form.group({
-      via: [''],
+      via: ['',Validators.required],
       civico: ['']
     }), //array group
-    privacy: ['', Validators.requiredTrue],
-    facoltativePrivacy: ['']
+    arrayPrivacy:this.form.array([{privacy:Validators.requiredTrue},{facoltativePrivacy:Validators.requiredTrue}])
+  
   });
 
   ngOnInit(): void {
