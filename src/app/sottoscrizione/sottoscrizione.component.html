@@ -29,15 +29,19 @@
         <label for="civico">Civico: </label>
         <input id="civico" type="text" formControlName="civico"> <br>
     </div>
+    <div formArrayName="arrayPrivacy">
+        <div  *ngFor = "let item of arrayPrivacy.controls; let indice = index">
+            <label for="privacy">Privacy: </label>
+            <input type="checkbox"  id="privacy" [formControlName]="indice"> <br>  
+        </div>
+    
 
-    <label for="privacy">Privacy: </label>
-    <input type="checkbox"  id="privacy" formControlName="privacy"> <br>
-
-    <label for="facoltativePrivacy">Facoltative Privacy: </label>
-    <input type="checkbox"  id="facoltativePrivacy" formControlName="facoltativePrivacy"> <br>
+    </div>
+    
+  
     <button type="submit" >Submit</button>
 </form>
     <p>{{ datiSottoscrizione.value | json }}</p>
 </div>
-/*
+
 

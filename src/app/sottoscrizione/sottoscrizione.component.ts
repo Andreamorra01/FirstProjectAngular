@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators,FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -30,13 +30,16 @@ export class SottoscrizioneComponent implements OnInit {
       via: ['',Validators.required],
       civico: ['']
     }), //array group
-    arrayPrivacy:this.form.array([{privacy:Validators.requiredTrue},{facoltativePrivacy:Validators.requiredTrue}])
-  
-  });
-
+    arrayPrivacy:this.form.array([this.form.control(false),
+    this.form.control(false)])}
+  )
   ngOnInit(): void {
     this.data = this.location.getState();// passo dati tramite Location 
     
+  }
+  
+  get arrayPrivacy(): FormArray {
+    return this.datiSottoscrizione.get('arrayPrivacy') as FormArray;
   }
 
   onSubmit() {
@@ -45,6 +48,8 @@ export class SottoscrizioneComponent implements OnInit {
       return;
     }
     console.log(this.datiSottoscrizione.value)
+    console.log(this.arrayPrivacy.controls);
+    
   }
 
 }
