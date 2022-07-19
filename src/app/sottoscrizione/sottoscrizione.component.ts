@@ -51,5 +51,6 @@ export class SottoscrizioneComponent implements OnInit {
     console.log(this.arrayPrivacy.controls);
     
   }
+  //aho
 
 }
