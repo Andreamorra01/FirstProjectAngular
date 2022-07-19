@@ -11,14 +11,36 @@
     <label for="name">Name: </label>
     <input id="name" type="text" formControlName="name"> <br>
 
+    <small class="text-danger"*ngIf="datiSottoscrizione.get('name')?.hasError('minlength')">
+        The minimum length for this field is {{datiSottoscrizione.get('name')?.errors?.['minlength'].requiredLength}} characters.
+        <br>
+    </small>
+    <!-- <p>required</p> -->
+
+
     <label for="surname">Surname: </label>
     <input id="surname" type="text" formControlName="surname"> <br>
+    <small class="text-danger"*ngIf="datiSottoscrizione.get('surname')?.hasError('minlength')">
+        The minimum length for this field is {{datiSottoscrizione.get('surname')?.errors?.['minlength'].requiredLength}} characters.
+        <br>
+    </small>
 
     <label for="email">Email: </label>
     <input id="email" type="text" formControlName="email"> <br>
 
+    <small class="text-danger"*ngIf="datiSottoscrizione.get('email')?.hasError('email')">
+        invalid email
+        <br>
+    </small>
+
     <label for="numberPhone">Phone number: </label>
     <input id="numberPhone" type="text" formControlName="numberPhone"> <br><br>
+
+    <small class="text-danger"*ngIf="(datiSottoscrizione.get('numberPhone')?.hasError('minlength')
+     ||datiSottoscrizione.get('numberPhone')?.hasError('maxlength')) ">
+     inserisci il formato corretto
+        <br>
+    </small>
 
     <div formGroupName="address">
         <h2>Address</h2>
@@ -38,5 +60,6 @@
     <button type="submit" >Submit</button>
 </form>
     <p>{{ datiSottoscrizione.value | json }}</p>
+    
 </div>
 
