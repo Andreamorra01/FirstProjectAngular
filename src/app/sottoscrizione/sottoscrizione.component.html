@@ -6,10 +6,19 @@
     <img mat-card-image [src]="data.img">
 </mat-card>
 
-<div> 
+<div > 
 <form (ngSubmit) =  "onSubmit()" [formGroup]="datiSottoscrizione">
     <label for="name">Name: </label>
     <input id="name" type="text" formControlName="name"> <br>
+    <div
+        *ngIf="datiSottoscrizione.get('name')?.invalid && 
+        datiSottoscrizione.get('name')?.errors && 
+        (datiSottoscrizione.get('name')?.dirty)">
+        <small class="text-danger"*ngIf="datiSottoscrizione.get('name')?.hasError('minlength')">
+            The minimum length for this field is {{datiSottoscrizione.get('name')?.errors?.['minlength'].requiredLength}} characters.
+        </small>
+        <!-- <p>required</p> -->
+    </div>
 
     <small class="text-danger"*ngIf="datiSottoscrizione.get('name')?.hasError('minlength')">
         The minimum length for this field is {{datiSottoscrizione.get('name')?.errors?.['minlength'].requiredLength}} characters.
@@ -51,15 +60,20 @@
         <label for="civico">Civico: </label>
         <input id="civico" type="text" formControlName="civico"> <br>
     </div>
+    <div formArrayName="arrayPrivacy">
+        <div  *ngFor = "let item of arrayPrivacy.controls; let indice = index">
+            <label for="privacy">Privacy: </label>
+            <input type="checkbox"  id="privacy" [formControlName]="indice"> <br>  
+        </div>
+    
 
-    <label for="privacy">Privacy: </label>
-    <input type="checkbox"  id="privacy" formControlName="privacy"> <br>
-
-    <label for="facoltativePrivacy">Facoltative Privacy: </label>
-    <input type="checkbox"  id="facoltativePrivacy" formControlName="facoltativePrivacy"> <br>
-    <button type="submit" >Submit</button>
+    </div>
+    
+  
+    <button type="submit" [disabled]="datiSottoscrizione.invalid">Submit</button>
 </form>
     <p>{{ datiSottoscrizione.value | json }}</p>
     
 </div>
+
 
