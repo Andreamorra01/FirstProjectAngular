@@ -1,15 +1,23 @@
-<mat-card class="example-card">
-    <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>{{data.name}}</mat-card-title>
-    </mat-card-header>
-    <img mat-card-image [src]="data.img">
-</mat-card>
+<mat-grid-list cols="1" rowHeight="500px">
+    <mat-grid-tile>
+        <mat-card class="example-card">
+            <mat-card-header>
+                <mat-card-title>{{data.name}}</mat-card-title>
+                <mat-card-subtitle>Digimon</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image [src]="data.img" alt="Photo of a Digimon">
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>
 
 <div > 
-<form (ngSubmit) =  "onSubmit()" [formGroup]="datiSottoscrizione">
-    <label for="name">Name: </label>
-    <input id="name" type="text" formControlName="name"> <br>
+<form (ngSubmit) ="onSubmit()" [formGroup]="datiSottoscrizione">
+    
+    <mat-form-field appearance="fill">
+        <mat-label for="name">Name: </mat-label>
+        <input id="name" type="text" formControlName="name" matInput> <br>
+    </mat-form-field>
+    
     <div
         *ngIf="datiSottoscrizione.get('name')?.invalid && 
         datiSottoscrizione.get('name')?.errors && 
@@ -20,8 +28,12 @@
         <!-- <p>required</p> -->
     </div>
 
-    <label for="surname">Surname: </label>
-    <input id="surname" type="text" formControlName="surname"> <br>
+    <mat-form-field appearance="fill">
+        <mat-label for="surname">Surname: </mat-label>
+        <input id="surname" type="text" formControlName="surname" matInput> <br>
+    </mat-form-field>
+
+
 
     <label for="email">Email: </label>
     <input id="email" type="text" formControlName="email"> <br>
@@ -39,9 +51,11 @@
         <input id="civico" type="text" formControlName="civico"> <br>
     </div>
     <div formArrayName="arrayPrivacy">
-        <div  *ngFor = "let item of arrayPrivacy.controls; let indice = index">
-            <label for="privacy">Privacy: </label>
-            <input type="checkbox"  id="privacy" [formControlName]="indice"> <br>  
+        <div *ngFor = "let item of arrayPrivacy.controls; let indice = index">
+           
+            <mat-checkbox [id]="indice + ''" [formControlName]="indice">
+                Privacy
+            </mat-checkbox><br>  
         </div>
     
 

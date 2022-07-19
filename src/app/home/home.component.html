@@ -1,18 +1,19 @@
-<div *ngFor="let i of imageLink;let indice = index">
-    <!-- <img [src]="i.img" alt=""> -->
-    <!-- <h1>{{indice}}</h1> -->
-    <mat-card class="example-card">
+<h1 class="title">Digimons</h1>
+
+<mat-grid-list cols="2">
+  <div *ngFor="let i of imageLink;let indice = index">
+    <mat-grid-tile>
+      <mat-card class="example-card">
         <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{i.name}}</mat-card-title>
+          <mat-card-title>{{i.name}}</mat-card-title>
+          <mat-card-subtitle>Digimon</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image [src]="i.img">
+        <img mat-card-image [src]="i.img" alt="Photo of a Digimon">
         <mat-card-actions>
-        <button mat-button (click)="goToDetail(i)">Subscribe</button>
-
+          <button mat-button (click)="goToDetail(i)">SUBSCRIBE</button>
         </mat-card-actions>
-  </mat-card>
-
-</div>
-
+      </mat-card>
+    </mat-grid-tile>
+  </div>
+</mat-grid-list>
   
