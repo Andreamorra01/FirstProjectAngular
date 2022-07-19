@@ -6,6 +6,16 @@
   flex-direction: column;
 }
   
-.example-container > * {
+.example-container {
   width: 100%;
+}
+
+.input {
+  width : 25%;
+  margin: auto;
+}
+
+.classButton {
+  margin: auto;
+  display: flex;
 }
