@@ -10,76 +10,84 @@
     </mat-grid-tile>
 </mat-grid-list>
 
-<div > 
-<form (ngSubmit) ="onSubmit()" [formGroup]="datiSottoscrizione">
-    
-    <mat-form-field appearance="fill">
-        <mat-label for="name">Name: </mat-label>
-        <input id="name" type="text" formControlName="name" matInput> <br>
-    </mat-form-field>
-    
-    <div
-        *ngIf="datiSottoscrizione.get('name')?.invalid && 
-        datiSottoscrizione.get('name')?.errors && 
-        (datiSottoscrizione.get('name')?.dirty)">
-        <small class="text-danger"*ngIf="datiSottoscrizione.get('name')?.hasError('minlength')">
-            The minimum length for this field is {{datiSottoscrizione.get('name')?.errors?.['minlength'].requiredLength}} characters.
-        </small>
-        <!-- <p>required</p> -->
-    </div>
 
-    <mat-form-field appearance="fill">
-        <mat-label for="surname">Surname: </mat-label>
-        <input id="surname" type="text" formControlName="surname" matInput> <br>
-    </mat-form-field>
 
-    <small class="text-danger"*ngIf="datiSottoscrizione.get('surname')?.hasError('minlength')">
-        The minimum length for this field is {{datiSottoscrizione.get('surname')?.errors?.['minlength'].requiredLength}} characters.
-        <br>
-    </small>
-
-    <label for="email">Email: </label>
-    <input id="email" type="text" formControlName="email"> <br>
-
-    <small class="text-danger"*ngIf="datiSottoscrizione.get('email')?.hasError('email')">
-        invalid email
-        <br>
-    </small>
-
-    <label for="numberPhone">Phone number: </label>
-    <input id="numberPhone" type="text" formControlName="numberPhone"> <br><br>
-
-    <small class="text-danger"*ngIf="(datiSottoscrizione.get('numberPhone')?.hasError('minlength')
-     ||datiSottoscrizione.get('numberPhone')?.hasError('maxlength')) ">
-     inserisci il formato corretto
-        <br>
-    </small>
-
-    <div formGroupName="address">
-        <h2>Address</h2>
-
-        <label for="via">Street: </label>
-        <input id="via" type="text" formControlName="via"> <br>
-
-        <label for="civico">Civico: </label>
-        <input id="civico" type="text" formControlName="civico"> <br>
-    </div>
-    <div formArrayName="arrayPrivacy">
-        <div *ngFor = "let item of arrayPrivacy.controls; let indice = index">
-           
-            <mat-checkbox [id]="indice + ''" [formControlName]="indice">
-                Privacy
-            </mat-checkbox><br>  
+<div  class="example-container"> 
+    <form (ngSubmit) ="onSubmit()" [formGroup]="datiSottoscrizione" class="example-container">
+        
+        <mat-form-field appearance="fill">
+            <mat-label for="name">Name: </mat-label>
+            <input id="name" type="text" formControlName="name" matInput> <br>
+        </mat-form-field>
+        
+        <div
+            *ngIf="datiSottoscrizione.get('name')?.invalid && 
+            datiSottoscrizione.get('name')?.errors && 
+            (datiSottoscrizione.get('name')?.dirty)">
+            <small class="text-danger"*ngIf="datiSottoscrizione.get('name')?.hasError('minlength')">
+                The minimum length for this field is {{datiSottoscrizione.get('name')?.errors?.['minlength'].requiredLength}} characters.
+            </small>
+            <!-- <p>required</p> -->
         </div>
-    
 
-    </div>
-    
-  
-    <button type="submit" [disabled]="datiSottoscrizione.invalid">Submit</button>
-</form>
-    <p>{{ datiSottoscrizione.value | json }}</p>
-    
+        <mat-form-field appearance="fill">
+            <mat-label for="surname">Surname: </mat-label>
+            <input id="surname" type="text" formControlName="surname" matInput> <br>
+        </mat-form-field>
+
+        <small class="text-danger"*ngIf="datiSottoscrizione.get('surname')?.hasError('minlength')">
+            The minimum length for this field is {{datiSottoscrizione.get('surname')?.errors?.['minlength'].requiredLength}} characters.
+            <br>
+        </small>
+        <mat-form-field appearance="fill">
+            <mat-label for="email">Email: </mat-label>
+            <input id="email" type="text" formControlName="email" matInput> <br>
+        </mat-form-field>
+        <small class="text-danger"*ngIf="datiSottoscrizione.get('email')?.hasError('email')">
+            invalid email
+            <br>
+        </small>
+
+        <mat-form-field appearance="fill">
+            <mat-label for="numberPhone">Phone number: </mat-label>
+            <input id="numberPhone" type="text" formControlName="numberPhone" matInput> <br>
+        </mat-form-field>
+
+        <small class="text-danger"*ngIf="(datiSottoscrizione.get('numberPhone')?.hasError('minlength')
+        ||datiSottoscrizione.get('numberPhone')?.hasError('maxlength')) ">
+        inserisci il formato corretto
+            <br>
+        </small>
+
+        <div formGroupName="address">
+            <h2>Address</h2>
+            <mat-form-field appearance="fill">
+                <mat-label for="via">Street: </mat-label>
+                <input id="via" type="text" formControlName="via" matInput> <br>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label for="civico">Civico: </mat-label>
+                <input id="civico" type="text" formControlName="civico" matInput> <br>
+            </mat-form-field>
+        </div>
+        <div formArrayName="arrayPrivacy">
+            <div *ngFor = "let item of arrayPrivacy.controls; let indice = index">
+            
+                <mat-checkbox [id]="indice + ''" [formControlName]="indice">
+                    Privacy
+                </mat-checkbox><br>  
+            </div>
+        
+
+        </div>
+        <br>
+        <!-- <button type="submit" [disabled]="datiSottoscrizione.invalid">Submit</button> -->
+        <button mat-raised-button [disabled]="datiSottoscrizione.invalid">Submit</button>
+    </form>
+    <br>
+    <p>{{ datiSottoscrizione.value | json }}</p>    
 </div>
+
 
 

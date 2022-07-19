@@ -17,9 +17,9 @@ export class SottoscrizioneComponent implements OnInit {
   }
 
   datiSottoscrizione = this.form.group({
-    name: ['',  Validators.minLength(4)],
-    surname: ['', Validators.minLength(3)],
-    email: ['', Validators.email],
+    name: ['',  [Validators.minLength(4), Validators.required]],
+    surname: ['', [Validators.minLength(3), Validators.required]],
+    email: ['', [Validators.email, Validators.required]],
     numberPhone: ['', [ 
       Validators.required,
       Validators.pattern("^[0-9]*$"),
